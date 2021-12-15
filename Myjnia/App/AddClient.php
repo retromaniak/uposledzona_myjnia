@@ -9,7 +9,7 @@ class AddClient extends \PDO
     public function __Construct(){
         $open = new Connect();
         $baza = $open -> Connect();
-        echo("Nowa Rezerwacja\n  [1] - Nowy Klient\n  [2] - Istniejący Klient\n");
+        echo("Nowa Rezerwacja\n  [1] - Nowy Klient\n  [2] - Istniejący Klient\nCo chcesz zrobić?\n");
         $newOrder = (int)fgets(STDIN);
         if ($newOrder == 1) {
             echo("Podaj Imię:\n");
@@ -31,7 +31,7 @@ class AddClient extends \PDO
             $orderList = "SELECT * FROM rezerwacje WHERE Data_Rez = '$date'";
             $zap5 = $baza -> query($orderList) -> fetchAll();
             if ($zap5 == null) {
-                echo ("Wszystkie terminy są wolne");
+                echo ("Wszystkie terminy są wolne\n");
             } else {
                 foreach ($zap5 AS $key => $value){
                     echo ($value["Godzina_Rez"]."\n");
@@ -82,5 +82,6 @@ class AddClient extends \PDO
         } else {
             echo("Podaj poprawną liczbę\n");
         }
+        $baza = null;
     }
 }

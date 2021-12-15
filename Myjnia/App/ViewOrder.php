@@ -50,5 +50,6 @@ class ViewOrder extends \PDO
         } else {
             echo("Podaj poprawną liczbę\n");
         }
+        $baza = null;
     }
 }

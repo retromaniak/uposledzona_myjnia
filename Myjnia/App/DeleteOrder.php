@@ -18,5 +18,6 @@ class DeleteOrder extends \PDO
         $id = $zap->fetch()["ID_K"];
         $orderDelete = "DELETE FROM rezerwacje WHERE Klient = $id AND Data_Rez = '$orderDate'";
         $baza -> exec($orderDelete);
+        $baza = null;
     }
 }
